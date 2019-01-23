@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_generator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cghanime <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cghanime <cghanime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 17:27:05 by cghanime          #+#    #+#             */
-/*   Updated: 2019/01/22 17:02:25 by cghanime         ###   ########.fr       */
+/*   Created: 2019/01/23 17:22:43 by cghanime          #+#    #+#             */
+/*   Updated: 2019/01/23 19:44:56 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,22 @@
 
 char	*ft_map_generator(int tetrinb)
 {
-	char **map;
-	static int tetrisurface;
 	int i;
 	int j;
+	char **map;
 
-	tetrisurface = 16;
-	if(!(**map = (char **)malloc(sizeof(char) * tetrisurface * tetrinb)))
-		return (NULL);
-	while (i < (4 * tetrinb))
+	*map = (char *)malloc(2 * tetrinb * sizeof(char));
+	i = j = 0;
+	while (i++ < tetrinb)
 	{
-		map[i][j] = ".";
-		while (j < (4 * tetrinb))
+		while (j++ < tetrinb)
 		{
-			map[i][j] = ".";
-			j++;
+			map[i][j] = '.';
+			printf("%c", map[i][j]);
 		}
-	i++;
+		j = 0;
+		map[i][j] = '.';
+		printf("\n");
 	}
-	printf("%s", map[i][j]);
-	return (map[i][j]);
+	return (0);
 }
