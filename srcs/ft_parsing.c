@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_generator.c                                    :+:      :+:    :+:   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cghanime <cghanime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/23 17:22:43 by cghanime          #+#    #+#             */
-/*   Updated: 2019/01/24 14:33:50 by cghanime         ###   ########.fr       */
+/*   Created: 2019/01/24 16:34:22 by cghanime          #+#    #+#             */
+/*   Updated: 2019/01/24 18:00:27 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-char	*ft_map_generator(int tetrinb)
+void	ft_parsing(char **tab)
 {
 	int i;
 	int j;
-	char **map;
+	int ret;
+	int c_i;
+	int c_j;
 
-	*map = (char *)malloc(2 * tetrinb * sizeof(char));
-	i = j = 0;
-	while (i++ < tetrinb)
+
+	ret = read(fd, *tab, 545);
 	{
-		while (j++ < tetrinb)
-		{
-			map[i][j] = '.';
-			printf("%c", map[i][j]);
-		}
-		j = 0;
-		map[i][j] = '.';
-		printf("\n");
-	}
-	return (0);
-}
+		if (tab[i][j] == '#' && tab[i + 1][j] == '#')
+			c_j++;
+		if (tab[i][j] == '#' && tab[i][j + 1] == '#')
+			c_i++;
 
+	}
+}

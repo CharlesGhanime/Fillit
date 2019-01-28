@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_generator.c                                    :+:      :+:    :+:   */
+/*   main_database.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cghanime <cghanime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/23 17:22:43 by cghanime          #+#    #+#             */
-/*   Updated: 2019/01/24 14:33:50 by cghanime         ###   ########.fr       */
+/*   Created: 2019/01/28 18:16:07 by cghanime          #+#    #+#             */
+/*   Updated: 2019/01/28 18:33:14 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <libc.h>
+#include "libft/libft.h"
 
-char	*ft_map_generator(int tetrinb)
+
+int main()
+
 {
 	int i;
-	int j;
-	char **map;
 
-	*map = (char *)malloc(2 * tetrinb * sizeof(char));
-	i = j = 0;
-	while (i++ < tetrinb)
+	i = 0;
+	while (i < 19)
 	{
-		while (j++ < tetrinb)
-		{
-			map[i][j] = '.';
-			printf("%c", map[i][j]);
-		}
-		j = 0;
-		map[i][j] = '.';
-		printf("\n");
+		printf("%s", ft_data());
+		i++;
 	}
 	return (0);
 }
-

@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_generator.c                                    :+:      :+:    :+:   */
+/*   ft_tetri_counter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cghanime <cghanime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/23 17:22:43 by cghanime          #+#    #+#             */
-/*   Updated: 2019/01/24 14:33:50 by cghanime         ###   ########.fr       */
+/*   Created: 2019/01/24 14:59:25 by cghanime          #+#    #+#             */
+/*   Updated: 2019/01/24 18:00:30 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
-char	*ft_map_generator(int tetrinb)
+int		ft_tetri_counter(int fd, char **tab)
 {
+	int counter;
 	int i;
 	int j;
-	char **map;
 
-	*map = (char *)malloc(2 * tetrinb * sizeof(char));
-	i = j = 0;
-	while (i++ < tetrinb)
+	i = 0;
+	j = 0;
+	while (read(fd, *tab, 1) > 0)
+		if (tab[i][4] == '\n' && tab[i + 1][0] == '\n')
+			counter++;
+	return (counter);
+}
+
+int main(int argc, char **argv)
+{
+	int fd;
+	char **tab;
+
+	if (argc > 1)
 	{
-		while (j++ < tetrinb)
-		{
-			map[i][j] = '.';
-			printf("%c", map[i][j]);
-		}
-		j = 0;
-		map[i][j] = '.';
-		printf("\n");
+		fd = open(argv[1], O_RDONLY);
+		ft_tetri_counter(fd, *tab);
 	}
 	return (0);
 }
-
