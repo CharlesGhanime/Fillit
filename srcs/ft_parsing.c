@@ -6,25 +6,24 @@
 /*   By: cghanime <cghanime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 16:34:22 by cghanime          #+#    #+#             */
-/*   Updated: 2019/01/24 18:00:27 by cghanime         ###   ########.fr       */
+/*   Updated: 2019/01/29 18:23:49 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_parsing(char **tab)
+#include "../includes/Fillit.h"
+#include "libft/libft.h"
+#include <libc.h>
+
+void	ft_parsing(char *tab, int fd)
 {
 	int i;
-	int j;
 	int ret;
-	int c_i;
-	int c_j;
 
-
-	ret = read(fd, *tab, 545);
+	i = 0;
+	ret = read(fd, tab, 545);
 	{
-		if (tab[i][j] == '#' && tab[i + 1][j] == '#')
-			c_j++;
-		if (tab[i][j] == '#' && tab[i][j + 1] == '#')
-			c_i++;
-
+		if ((tab[i] == '#' && tab[i + 1] == '#') || (tab[i] == '#' && tab[i + 5]))
+			if ((tab[i] == '.' && tab[i - 1] == '#') || (tab[i] == '#' && tab[i + 1] == '.'))
+					i++;
 	}
 }
