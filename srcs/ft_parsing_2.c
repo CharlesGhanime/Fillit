@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*   ft_parsing_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cghanime <cghanime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 16:34:22 by cghanime          #+#    #+#             */
-/*   Updated: 2019/02/05 18:34:42 by cghanime         ###   ########.fr       */
+/*   Updated: 2019/02/05 19:03:37 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,27 @@ int		ft_parsing(char *tab,		int fd)
 	ret = read(fd, tab, 545);
 	tab[ret] = '\0';
 	printf("ret : %d\n", ret);
-	printf("tab : %s\n", tab);
+	printf("tab : \n%s\n", tab);
 	while (tab[i] != '\0')
 	{
 		if (tab[i] == '.')
 			i++;
 		if (tab[i] == '#')
 		{
-			diese++;
 			printf("diese : %d\n", diese);
 			printf("i : %d\n", i);
-			printf("tab[i] : %c\n", tab[i]);
-			if (tab[i + 1] == '#' || tab[i + (5 - i)] == '#')
-				i++;
+			printf("tab[i] :\n%c\n", tab[i]);
+			diese++;
+			i++;
+			if (tab[i + 1] == '#' || tab[i + 5] == '#')
+			{
+			}
 		}
-		if (diese >= 4)
+		if (diese > 4)
+		{
+			printf("Hello Mofo");
 			return (0);
-		printf("you fucked up brah\n");
+		}
 	}
 	return (0);
 }
