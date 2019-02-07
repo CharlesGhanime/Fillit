@@ -6,7 +6,7 @@
 /*   By: cghanime <cghanime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 16:34:22 by cghanime          #+#    #+#             */
-/*   Updated: 2019/02/06 18:24:59 by cghanime         ###   ########.fr       */
+/*   Updated: 2019/02/07 17:20:02 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,20 @@ int check_lines(char *tab, int fd)
 	i = 0;
 	diese_lines = 0;
 
-	while (tab[i] != '\n')
+	while (tab[i] != '\0')
 	{
-		if (tab[i] != '#' && tab[i] != '.')
+		if (tab[i] != '#' && tab[i] != '.' && tab[i] != '\n' && tab[i] != '\0')
 		{
 			printf("WHAT?! WADAFAC LINES!\n");
 			break;
 		}
 		if (tab[i] == '#')
 		{
-			printf ("ca rentre dans cette boucle\n");
+			printf ("ca rentre dans cette boucle lines\n");
 			diese_lines++;
 			printf("diese_line : %d\n", diese_lines);
-			if (tab[i] == '#' && tab[i + 1] == '#' && diese_lines <= 3)
+			if 
+			if (tab[i] == '#' && tab[i + 1] == '#' && diese_lines == 3)
 			{
 				printf("c'est bon mafack les lines\n");
 				return (diese_lines);
@@ -60,15 +61,18 @@ int check_columns(char *tab, int fd)
 
 	while (tab[i] != '\0')
 	{
-		if (tab[i] != '#' && tab[i] != '.')
+		if (tab[i] != '#' && tab[i] != '.' && tab[i] != '\n' && tab[i] != '\0')
 		{
 			printf("WHAT?! WADAFAC COLUMNS!\n");
 			break;
 		}
+		if (tab[i] == '.')
+			i++;
 		if (tab[i] == '#')
 		{
-			printf ("ca rentre dans cette boucle\n");
+			printf ("ca rentre dans cette boucle columns\n");
 			diese_columns++;
+			i+= 5;
 			printf("diese_columns : %d\n", diese_columns);
 			if (tab[i] == '#' && tab[i + 5] == '#' && diese_columns <= 3)
 			{
@@ -76,7 +80,6 @@ int check_columns(char *tab, int fd)
 				return (diese_columns);
 			}
 		}
-		i++;
 	}
 	return (0);
 }
@@ -91,10 +94,9 @@ int		ft_parsing(char *tab, int fd)
 	diese_total = 0;
 	ret = read(fd, tab, 545);
 	tab[ret] = '\0';
-	check_lines(tab, fd);
-	check_columns(tab, fd);
-	diese_total = check_lines(tab, fd) + check_columns(tab, fd);
-	if (diese_total != 3)
+	//printf("check_lines : %i\n", check_lines(tab, fd));
+	//printf("check_columns : %i\n", check_columns(tab, fd));
+	if (check_lines(tab, fd) != 3)
 	{
 		printf("INVALID PATTERN THO");
 			return (0);
