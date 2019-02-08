@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fonction_checking_tetriminos.c                     :+:      :+:    :+:   */
+/*   ft_parsing_3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cghanime <cghanime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:19:44 by cghanime          #+#    #+#             */
-/*   Updated: 2019/02/07 18:05:05 by cghanime         ###   ########.fr       */
+/*   Updated: 2019/02/08 09:53:42 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <libc.h>
 #include <unistd.h>
 
-int ft_checking_tetriminos(char *tab, int fd)
+int ft_parsing(char *tab, int fd)
 {
 	int i;
 	int diese;
@@ -39,4 +39,11 @@ int ft_checking_tetriminos(char *tab, int fd)
 				flag_column = 1;
 		}
 	}
+	printf("diese : %d\n", diese);
+	if (diese != 3)
+	{
+		printf("Diese != 3");
+		return (0);
+	}
+	return (diese);
 }
