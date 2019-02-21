@@ -1,34 +1,47 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: cghanime <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/01/21 15:30:03 by cghanime          #+#    #+#              #
-#    Updated: 2019/01/21 15:41:23 by cghanime         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME := fillit
+CC := gcc
+FLAGS := -Wall -Wextra -Werror
+SRC := source/database.c \
+	   source/ft_check.c \
+	   source/ft_error.c \
+	   source/ft_list.c \
+	   source/ft_read.c \
+	   source/main.c \
+	   source/map_gen.c \
+	   source/math.c \
+	   source/osef.c \
+	   source/parsing.c \
+	   source/print_map.c \
+	   source/setting_tetri.c \
+	   source/setting_map.c \
+		source/solver.c \
+		
+OBJ := $(SRC:.c=.o)
+LIB := libft/libft.a
 
-NAME = Fillit.a
-CPL = gcc -Wall -Wextra -Werror
-HEADER = -I Fillit.h
-SRCS= 
+all: $(NAME)
 
-OBJECTS = $(SRCS:.c=.o)
-	all: $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) -o $(NAME) $^ $(LIB)
+	rm source/*.o
 
-$(NAME): $(OBJECTS)
-	$(CPL) $(HEADER) -c $(SRCS)
-	ar -rcv $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+libft:
+	make -C ./libft/
+
+%.o: ./source/%.c
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY : all clean fclean re
+unmap:
+	rm -f Map/*
+
+.PHONY: libft
+
+
