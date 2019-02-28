@@ -6,7 +6,7 @@
 /*   By: pauljull <pauljull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:17:47 by pauljull          #+#    #+#             */
-/*   Updated: 2019/02/27 04:54:05 by pauljull         ###   ########.fr       */
+/*   Updated: 2019/02/27 17:10:11 by pauljull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ int		check(t_tetri *tetri, int index, int mask)
 	if ((tetri->pos_y == index) && (tetri->pos_x == mask))
 		return (1);
 	return (0);
+}
+
+int		reset_pos_x(int tetri)
+{
+	int mask;
+
+	mask = 1;
+	while (!(mask & tetri))
+		mask <<= 1;
+	return (mask);
 }
 
 int		print_block(t_tetri *tetri)
@@ -39,12 +49,7 @@ int		print_block(t_tetri *tetri)
 	tetri->tetri >>= 4;
 	tetri->pos_y += 1;
 	if (tetri->tetri)
-	{
-		mask = tetri->pos_x;
-		while (!(mask & tetri->tetri))
-			mask <<= 1;
-	}
-	tetri->pos_x = mask;
+		tetri->pos_x = reset_pos_x(tetri->tetri);
 	return (swipe);
 }
 

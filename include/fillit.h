@@ -6,7 +6,7 @@
 /*   By: pauljull <pauljull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 16:59:29 by pauljull          #+#    #+#             */
-/*   Updated: 2019/02/27 03:16:59 by pauljull         ###   ########.fr       */
+/*   Updated: 2019/02/28 17:52:11 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,13 @@ int		            set_tetri_length(int tetri);
 int	                set_fblock_bit(int tetri, int block, int decal);
 int		            backtracking(t_tetri *tetri, t_map *map);
 void	            solver(t_tetri **tetri_ref, t_map **map_ref);
-void solver_recursif(t_tetri *tetri, t_map *map);
+void solver_recursif(t_tetri *tetri, t_map *map, int val);
 int	                validity_check(char *file, int n_tetri);
 int		            first_one(int tetri);
 void	            print_list_tetri(t_tetri *tetri);
 void	            print_list_map(t_map *map);
 void	ft_print_map_final(t_tetri *tetri, t_map *map);
+int		reset_pos_x(int tetri);
 
 void	            print_bit_int(int wallah);
 void	            print_tetri_bit(int tetri);

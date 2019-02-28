@@ -6,7 +6,7 @@
 /*   By: pauljull <pauljull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 13:39:51 by pauljull          #+#    #+#             */
-/*   Updated: 2019/02/27 04:51:00 by pauljull         ###   ########.fr       */
+/*   Updated: 2019/02/28 19:23:15 by cghanime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	main(int ac, char **av)
 		return (0);
 	tetri = parser_file(path, n_tetri);
 	map = map_gen(n_tetri);
-//	print_list_map(map);
-	solver_recursif(tetri, map);
+	while ()
+		solver_recursif(tetri, map, 0);
 	save = tetri;
 	while (tetri)
 	{
@@ -47,8 +47,9 @@ int	main(int ac, char **av)
 		tetri = tetri->next;
 	}
 	tetri = save;
-	print_list_tetri(tetri);
-	print_bit_int(tetri->tetri);
-	ft_print_map_final(tetri, map);
+//	print_list_tetri(tetri);
+//	print_bit_int(tetri->tetri);
+//	print_map_bit(map);
+//	ft_print_map_final(tetri, map);
 	return (0);
 }
