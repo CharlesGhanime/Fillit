@@ -14,8 +14,9 @@ SRC := source/database.c \
 	   source/print_map.c \
 	   source/setting_tetri.c \
 	   source/setting_map.c \
-		source/solver.c \
-		
+	   source/solver.c \
+	   source/print_map_final.c 
+
 OBJ := $(SRC:.c=.o)
 LIB := libft/libft.a
 
@@ -23,7 +24,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $^ $(LIB)
-	rm source/*.o
 
 libft:
 	make -C ./libft/
@@ -32,7 +32,7 @@ libft:
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o
+	rm -f source/*.o
 
 fclean: clean
 	rm -f $(NAME)
